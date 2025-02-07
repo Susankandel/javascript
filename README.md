@@ -16,7 +16,7 @@
 
 3. Commit
 
--->git commit -m "<message>"
+-->git commit -m "<msg>"
 
 4. push
 

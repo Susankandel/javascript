@@ -68,6 +68,7 @@
 8. Anonymous Function
 9. Inliner Function
 10. Callback Function
+11. pure function
 
 */
 
@@ -122,20 +123,135 @@
 //Write a parameterization Function to calculate the volume of cuboid
 //volume= l*b*h
 
-const volume =({length,breath, height})=>{
-return length* breath*height
-};
+// const volume =({length,breath, height})=>{
+// return length* breath*height
+// };
 
-console.log(volume({length:2, breath:4, height:4}))
+// console.log(volume({length:2, breath:4, height:4}))
 
 //IIFEs (Immediately Invoked Function Expression)
 
 // (()=> {})();
 
-((a="test")=>{
-    console.log ("IIFES", a)
-})(test);
+// ((a="test")=>{
+//     console.log ("IIFES", a)
+// })(test);
 
 
+// Function can return Primitive DataType / Complex DataType / Function 
 
+// Closure
+const counter = () => {
+    let count = 1;
+    return() => {
+    const increment = count ++;
+    return increment;
+    }
+};
+
+const counterA = counter();
+const counterB = counter();
+
+console.log(counterA()); //Dashai
+console.log(counterA()); //Dashai
+console.log(counterA()); // Dashai
+
+console.log(counterB()); // Tihar
+console.log(counterB()); // Tihar
+
+//Private Variables
+//Local Variables
+//Global Variables
+//Lexical Variables
+//Closer Variables ==> Lexical Scoping => local , Private Variables, Global Variables
+
+// variables that  can be accssed outside or even inside the function is called global function
+
+//Explicit Function 
+const summer = () => {
+    return 0;
+}
+console.log ({summer:summer()});
+
+//
+
+const addition =(a,b) => {
+    const sum = a+b;
+    return sum;
+};
+
+// Implicit Function
+const summer1 =() => 0;
+console.log(summer1());
+
+//
+const addition1 = (a,b) => a + b;
+console.log (addition(4,5));
+
+
+//Anonymous Function 
+const test = function(){
+    console.log("Test");
+};
+test();
+//logger Implimentation +> warn user
+
+// inline Function 
+const testInLine = function(){};
+
+//callback function
+
+//callback is the function that accepts another function as an parameter.
+
+const print = (data) =>{
+    console.log(`hello ${data}`);
+};
+
+const main = (user = "user", callbackFn) => {
+    const information = `Mr ${user}`;
+    return callbackFn(information);
+
+};
+
+main("susan", print)
+
+
+//Write a js function that calculate the volume of cuboid
+//v= l*b*h
+
+const volume = (length=0, breath=0, height=0) => length*breath%height;
+console.log (volume(2,4,6))
+
+// Write a js closure function that  mimics the bank account opening and deposit
+
+const Account = () => {
+    let balance  =0;
+    return (deposit) =>{
+        return balance += deposit;
+    }
+}
+const accountHolder1 = Account();
+const accountHolder2 = Account();
+ 
+console.log(accountHolder1(100));
+console.log(accountHolder1(200));
+console.log(accountHolder2(500));
+
+//Write a callback function to calculate the vat of the product
+//13% of item cost
+
+const calcTax = (qty,cp) => 0.13 * +qty * +cp;
+
+const cart = ({item, quantity=1,tax}) =>{
+    return tax(quantity,item);
+}
+
+const taxAmt = cart ({item: 1000, tax: calcTax});
+console.log(taxAmt)
+
+// pure Function result dont change for same input 
+//Utilities Function
+//proper Case Function Susan Kandel
+
+ 
 

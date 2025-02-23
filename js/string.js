@@ -12,27 +12,27 @@
 //solution : slice $ concat
 
 
-// 1st Way
-const Truncate = (text="") => {
-const textData = String(text);
-const textLength = textData.length;
-if (textLength>9){
-    const remaningText = textData.slice(0,9);
-    return remaningText.concat("...");
+// // 1st Way
+// const Truncate = (text="") => {
+// const textData = String(text);
+// const textLength = textData.length;
+// if (textLength>9){
+//     const remaningText = textData.slice(0,9);
+//     return remaningText.concat("...");
 
-} else 
-return textData; 
-};
+// } else 
+// return textData; 
+// };
 
-console.log(Truncate("Ram is a teacher at brodway"));
+// console.log(Truncate("Ram is a teacher at brodway"));
 
-//2nd Way
+// //2nd Way
 
-const TruncateES6= (text="")=>
-    String(text).length>9
-    ?String(text).slice(0,9).concat("...")
-    :String(text);
-console.log(TruncateES6("Ram is a teacher at brodway"));
+// const TruncateES6= (text="")=>
+//     String(text).length>9
+//     ?String(text).slice(0,9).concat("...")
+//     :String(text);
+// console.log(TruncateES6("Ram is a teacher at brodway"));
 
 
 
@@ -50,6 +50,31 @@ console.log(TruncateES6("Ram is a teacher at brodway"));
 
 //write a js function to clean data
 //susan      kandel to "Susan Kandel"
+
+const properCase = (data ="") => {
+    const text = String(data).toLocaleLowerCase();
+    let result= "";
+    let check= "true";
+    for (let i =0; i <text.length; i++){
+        const char = text[i];
+        if (check) {
+            result += char.toUpperCase();
+            check=false
+        }
+        else if (char === "") {
+            result += char;
+            check = true;
+        } else{
+            result += char;
+        }
+    }
+    return result;
+
+}
+
+console.log(properCase("sUSan kANDEL"))
+console.log(properCase("susan kandel"))
+
 
 //write a js function to cONVERT ANY NUMBER TO FORMATTED NUMBER
 // 1000 TO 1,000
